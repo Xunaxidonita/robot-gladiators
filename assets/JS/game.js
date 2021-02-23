@@ -8,10 +8,15 @@ var playerAttack = 10;
 var playerMoney = 10;
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
-var enemyAttack = 12;
+var enemyAttack = 10;
 const REFILL = "refill";
 const UPGRADE = "upgrade";
 const LEAVE = "leave";
+
+var randomNumber = function (min, max) {
+  var value = Math.floor(Math.random() * (max - min + 1) + min);
+  return value;
+};
 
 var fight = function (enemyName) {
   while (enemyHealth > 0 && playerHealth > 0) {
@@ -82,7 +87,8 @@ var startGame = function () {
     var pickedEnemyName = enemyNames[i];
     if (playerHealth > 0) {
       window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
-      enemyHealth = 50;
+      enemyHealth = randomNumber(40, 60);
+      enemyAttack = randomNumber(10, 14);
       fight(pickedEnemyName);
       if (playerHealth > 0 && i < enemyNames.length - 1) {
         var storeConfirm = window.confirm(
